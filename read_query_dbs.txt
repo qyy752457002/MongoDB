@@ -1,0 +1,30 @@
+db.products.find(query, projection, options)
+
+query
+document
+Optional. Specifies selection filter using query operators. To return all documents in a collection, omit this parameter or pass an empty document ({}).
+
+projection
+document
+Optional. Specifies the fields to return in the documents that match the query filter. To return all fields in the matching documents, omit this parameter. For details, see Projection.
+
+Query: https://www.mongodb.com/docs/manual/reference/operator/query/
+Collections: https://www.mongodb.com/docs/manual/reference/method/db.collection.find/
+
+shopDB> db.products.find()
+[
+  { _id: 1, name: 'Pen', price: 1.2 },
+  { _id: 2, name: 'Pencil', price: 0.8 }
+]
+shopDB> db.products.find({name: "Pencil"})
+[ { _id: 2, name: 'Pencil', price: 0.8 } ]
+
+
+shopDB> db.products.find({price: {$gt: 1}})
+[ { _id: 1, name: 'Pen', price: 1.2 } ]
+shopDB> db.products.find({_id: 1}, {name: 1})
+[ { _id: 1, name: 'Pen' } ]
+
+// name exists, id does not exist
+shopDB> db.products.find({_id: 1}, {name: 1, _id: 0})
+[ { name: 'Pen' } ]

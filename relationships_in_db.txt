@@ -1,0 +1,58 @@
+test> show dbs
+admin   40.00 KiB
+config  72.00 KiB
+local   40.00 KiB
+shopDB  72.00 KiB
+test> use shopDB
+switched to db shopDB
+shopDB> db.products.find()
+[
+  { _id: 1, name: 'Pen', price: 1.2, stock: 32 },
+  {
+    _id: 3,
+    name: 'Rubber',
+    price: 1.3,
+    stock: 43,
+    reviews: [
+      { authorName: 'Sally', rating: 5, review: 'Best rubber ever!' },
+      { authorName: 'John', rating: 5, review: 'Awesome rubber!' }
+    ]
+  }
+]
+
+test> show dbs
+admin    40.00 KiB
+config  108.00 KiB
+local    40.00 KiB
+shopDB   72.00 KiB
+test> use shopDB
+switched to db shopDB
+shopDB> db.products.find()
+[
+  { _id: 1, name: 'Pen', price: 1.2, stock: 32 },
+  {
+    _id: 3,
+    name: 'Rubber',
+    price: 1.3,
+    stock: 43,
+    reviews: [
+      { authorName: 'Sally', rating: 5, review: 'Best rubber ever!' },
+      { authorName: 'John', rating: 5, review: 'Awesome rubber!' }
+    ]
+  },
+  {
+    _id: 2,
+    name: 'Pencil',
+    price: 0.8,
+    stock: 12,
+    review: [
+      { authorName: 'James', rating: 4, review: 'Fantastic' },
+      {
+        authorName: 'Jono',
+        rating: 5,
+        review: "The best pencil I've used in my life."
+      }
+    ]
+  }
+]
+

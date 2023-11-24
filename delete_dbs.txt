@@ -1,0 +1,21 @@
+https://www.mongodb.com/docs/manual/tutorial/remove-documents/
+
+test> show dbs
+admin   40.00 KiB
+config  96.00 KiB
+local   40.00 KiB
+shopDB  72.00 KiB
+test> use shopDB
+switched to db shopDB
+shopDB> db.products.find()
+[
+  { _id: 1, name: 'Pen', price: 1.2, stock: 32 },
+  { _id: 2, name: 'Pencil', price: 0.8, stock: 12 }
+]
+shopDB> db.products.deleteOne({_id: 2})
+{ acknowledged: true, deletedCount: 1 }
+shopDB> db.find()
+TypeError: db.find is not a function
+shopDB> db.products.find()
+[ { _id: 1, name: 'Pen', price: 1.2, stock: 32 } ]
+shopDB>
